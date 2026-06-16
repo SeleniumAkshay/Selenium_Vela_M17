@@ -2,22 +2,21 @@ package Popups;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-public class HiddenDivisionPopup {
+public class NotificationNew {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		WebDriver driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-notifications");
+
+		WebDriver driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.get("https://www.irctc.co.in/nget/train-search");
-
-		driver.findElement(By.partialLinkText("LOGIN / REGISTER")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.className("fa-window-close")).click();
 
 		Thread.sleep(3000);
 		driver.quit();
